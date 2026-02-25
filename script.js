@@ -44,7 +44,22 @@ window.addEventListener('DOMContentLoaded', function() {
             updateNotAvailable();
          });
       }
- 
+      interviewBtn.addEventListener('click', function() {
+         interviewBtn.classList.add('bg-green-600', 'text-white');
+         interviewBtn.classList.remove('text-green-600');
+         rejectBtn.classList.remove('bg-red-600', 'text-white');
+         rejectBtn.classList.add('text-red-500');
+         const statusP = Array.from(section.querySelectorAll('p')).find(p => p.textContent.trim() === 'Not Applied' || p.textContent.trim() === 'Rejected' || p.textContent.trim() === 'Interview');
+         if (statusP) statusP.textContent = 'Interview';
+         const selected = document.querySelector('.bg-blue-500.text-white');
+         if (selected && selected.id !== 'all-filter-btn') {
+            toggleStyle(selected.id);
+         } else {
+            toggleStyle('all-filter-btn');
+         }
+         updateCounts();
+         updateNotAvailable();
+      });
       rejectBtn.addEventListener('click', function() {
          rejectBtn.classList.add('bg-red-600', 'text-white');
          rejectBtn.classList.remove('text-red-500');
