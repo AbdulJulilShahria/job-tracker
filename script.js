@@ -155,5 +155,14 @@ function toggleStyle(id) {
    rejectedCount.innerText = rejected;
 
    
-   
+   const notAvailableSection = document.getElementById('not-available');
+   if (notAvailableSection) {
+      if (id === 'interview-filter-btn' && interview === 0) {
+         notAvailableSection.style.display = '';
+      } else if (id === 'rejected-filter-btn' && rejected === 0) {
+         notAvailableSection.style.display = '';
+      } else {
+         notAvailableSection.style.display = 'none';
+      }
+   }
 }
